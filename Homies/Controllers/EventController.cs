@@ -180,6 +180,7 @@ namespace Homies.Controllers
 
             var e = await _context.Events
                 .Where(e => e.Id == id)
+                .AsNoTracking()
                 .FirstOrDefaultAsync();
 
             if (e == null) 
@@ -223,7 +224,7 @@ namespace Homies.Controllers
             DateTime end;
 
             if (!DateTime.TryParseExact(
-                model.End,
+                model.Start,
                 EventDateTimeFormat,
                 CultureInfo.InvariantCulture,
                 DateTimeStyles.None,
@@ -259,6 +260,32 @@ namespace Homies.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(All));
+        }
+
+        public async Task<IActionResult> Details(int id) 
+        {
+            var model = await _context.Events
+                .Where(ev => ev.Id == id)
+                .AsNoTracking()
+                .Select(ev => new EventDetailsViewModel
+                {
+                    Id = ev.Id,
+                    Name = ev.Name,
+                    Description = ev.Description,
+                    End = ev.End.ToString(EventDateTimeFormat),
+                    Start = ev.Start.ToString(EventDateTimeFormat),
+                    Type = ev.Type.Name,
+                    CreatedOn = ev.CreatedOn.ToString(EventDateTimeFormat),
+                    Organiser = ev.Organiser.UserName
+                })
+                .FirstOrDefaultAsync();
+
+            if (model == null)
+            {
+                return BadRequest();
+            }
+
+            return View(model);
         }
 
         private string GetUserId() 
