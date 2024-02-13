@@ -43,6 +43,21 @@ namespace Homies.Data
                     Name = "Work"
                 });
 
+            modelBuilder
+                .Entity<Event>()
+                .HasData(
+                new Event()
+                {
+                    Id = 5,
+                    Name = "Ivan",
+                    Description = "Petrohanov salam",
+                    OrganiserId = "9371e050-e8eb-4236-81e8-3b251f8225c5",
+                    CreatedOn = DateTime.Now,
+                    Start = DateTime.Now,
+                    End = DateTime.Now,
+                    TypeId = 2
+                });
+
             base.OnModelCreating(modelBuilder);
         }
 

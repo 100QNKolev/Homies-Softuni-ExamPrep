@@ -23,7 +23,6 @@ namespace Homies.Data
         [Required]
         public string OrganiserId { get; set; } = string.Empty;
 
-        [Required]
         [ForeignKey(nameof(OrganiserId))]
         public IdentityUser Organiser { get; set; } = null!;
 
@@ -39,6 +38,6 @@ namespace Homies.Data
         public Type Type { get; set; } = null!;
 
         [Required]
-        public IEnumerable<EventParticipant> EventsParticipants = new List<EventParticipant>();
+        public IList<EventParticipant> EventsParticipants = new List<EventParticipant>();
     }
 }
