@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Homies",
+    "\\Homies\\Data"
   ],
-  "SelectedNode": "\\Homies.sln",
+  "SelectedNode": "\\Homies\\Data\\HomiesDbContext.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using static Homies.Data.DataConstants;
@@ -24,7 +25,7 @@ namespace Homies.Data
 
         [Required]
         [ForeignKey(nameof(OrganiserId))]
-        public int Organiser { get; set; }
+        public IdentityUser Organiser { get; set; } = null!;
 
         public DateTime CreatedOn { get; set; }
         public DateTime Start { get; set; }
