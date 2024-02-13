@@ -14,6 +14,10 @@ namespace Homies.Data
 
         public const string EventDateTimeFormat = "yyyy-MM-dd H:mm";
 
+        public const string RequireErrorMessage = "The field {0} is required";
+        public const string StringLengthErrorMessage = "The field {0} must be between {2} and {1} characters long";
+        public const string DateTimeError = $"Invalid date! Format must be: {EventDateTimeFormat}";
+
         //------------------------------------------------------------------------
         //Constants for Type class
 

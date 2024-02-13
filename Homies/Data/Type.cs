@@ -12,7 +12,7 @@ namespace Homies.Data
 
         [Required]
         [MaxLength(TypeNameMaximumLentgth)]
-        public string Name { get; set; }
+        public string Name { get; set; } = string.Empty;
 
         public IEnumerable<Event> Events = new List<Event>();    
     }
